@@ -1,7 +1,7 @@
 #!groovy
 node {
   stage("checkout") {
-    git branch: 'monkey-business'
+    git branch: 'master', url: 'https://github.com/HaroldPutman/jenkins-pipeline.git'
   }
   stage("work") {
     echo pwd()
