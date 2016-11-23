@@ -1,7 +1,7 @@
 #!groovy
 node {
   stage("checkout") {
-    checkout scm
+    git branch: 'monkey-business'
   }
   stage("work") {
     echo pwd()
