@@ -1,5 +1,8 @@
 #!groovy
 node {
+  stage("checkout") {
+    checkout scm
+  }
   stage("work") {
     echo pwd()
     echo """
@@ -36,7 +39,7 @@ env.WORKSPACE = ${env.WORKSPACE}
       echo "env.BUILD_USER = ${env.BUILD_USER}"
     }
     def text = readFile file: "jenkins/resource.txt", encoding: 'UTF-8'
-    println text    
+    println text
   }
 
 }
