@@ -41,6 +41,9 @@ env.WORKSPACE = ${env.WORKSPACE}
     }
     def text = readFile file: "jenkins/resource.txt", encoding: 'UTF-8'
     println text
+    def atext = readFile file: "${env.WORKSPACE}@script/jenkins/resource.txt", encoding: 'UTF-8'
+    println atext
+
   }
 
 }
