@@ -1,7 +1,9 @@
 #!groovy
 node {
   stage("checkout") {
-    properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
+    if (!params.containsKey('BRANCH')) {
+      properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])      
+    }
     git branch: params.BRANCH
   }
   stage("work") {
