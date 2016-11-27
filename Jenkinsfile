@@ -1,4 +1,10 @@
 #!groovy
+
+@NonCPS
+def printMap(map) {
+  map.each{ k, v -> println "params.${k} = ${v}" }
+}
+
 node {
   stage("checkout") {
     if (!params.containsKey('BRANCH')) {
@@ -42,7 +48,7 @@ env.WORKSPACE = ${env.WORKSPACE}
 parameters
 ==========
 """
-    params.each{ k, v -> println "params.${k} = ${v}" }
+    printMap(params)
     wrap([$class: 'BuildUser']) {
       echo "env.BUILD_USER = ${env.BUILD_USER}"
     }
