@@ -2,7 +2,7 @@
 node {
   stage("checkout") {
     if (!params.containsKey('BRANCH')) {
-      properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])      
+      properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
     }
     git branch: params.BRANCH
   }
@@ -38,6 +38,11 @@ env.EXECUTOR_NUMBER = ${env.EXECUTOR_NUMBER}
 env.JAVA_HOME = ${env.JAVA_HOME}
 env.WORKSPACE = ${env.WORKSPACE}
 """
+  echo """
+parameters
+==========
+"""
+    params.each{ k, v -> println "params.${k} = ${v}" }
     wrap([$class: 'BuildUser']) {
       echo "env.BUILD_USER = ${env.BUILD_USER}"
     }
