@@ -1,7 +1,8 @@
 #!groovy
 node {
   stage("checkout") {
-    git branch: 'master', url: 'https://github.com/HaroldPutman/jenkins-pipeline.git'
+    properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
+    git url: '…', branch: params.BRANCH
   }
   stage("work") {
     echo pwd()
