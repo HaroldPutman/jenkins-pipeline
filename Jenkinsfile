@@ -5,7 +5,7 @@ node {
     if (!params.containsKey('BRANCH')) {
       properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
     }
-    git branch: params.BRANCH
+    git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: params.BRANCH
   }
   stage("work") {
     echo pwd()
