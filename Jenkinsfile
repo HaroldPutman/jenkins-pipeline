@@ -2,7 +2,7 @@
 node {
   stage("checkout") {
     properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
-    git url: '…', branch: params.BRANCH
+    git branch: params.BRANCH
   }
   stage("work") {
     echo pwd()
