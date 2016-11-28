@@ -1,5 +1,7 @@
 #!groovy
 
+echo "here in ${env.GIT_BRANCH}"
+
 node("linux") {
   stage("checkout") {
     if (!params.containsKey('BRANCH')) {
@@ -13,7 +15,7 @@ node("linux") {
 //    sh "find /lexbuild -name blargo-mustard.marker"
 //    sh "find /tmp -name blargo-mustard.marker"
 //    sh "find /var -name blargo-mustard.marker"
-    sh "find /etc -name blargo-mustard.marker"
+//    sh "find /etc -name blargo-mustard.marker"
 
     echo pwd()
     echo """
