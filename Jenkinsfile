@@ -1,11 +1,6 @@
 #!groovy
-node {
-  echo 'here'
-  def scriptFile = getClass().protectionDomain.codeSource.location.path
-  echo scriptFile
-}
 
-node {
+node("linux") {
   stage("checkout") {
     if (!params.containsKey('BRANCH')) {
       properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
