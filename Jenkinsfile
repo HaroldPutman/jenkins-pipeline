@@ -38,6 +38,7 @@ env.JENKINS_URL = ${env.JENKINS_URL}
 env.EXECUTOR_NUMBER = ${env.EXECUTOR_NUMBER}
 env.JAVA_HOME = ${env.JAVA_HOME}
 env.WORKSPACE = ${env.WORKSPACE}
+env.JENKINS_HOME = ${env.JENKINS_HOME}
 """
   echo """
 parameters
