@@ -1,6 +1,6 @@
 #!groovy
 
-node {
+node("linux") {
   stage("checkout") {
     if (!params.containsKey('BRANCH')) {
       properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
