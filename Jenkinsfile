@@ -1,7 +1,7 @@
 #!groovy
 node("linux") {
-  echo 'Starting'
-  sh 'ls -al'  
+  def scriptFile = getClass().protectionDomain.codeSource.location.path
+  echo scriptFile;
 }
 
 node("linux") {
