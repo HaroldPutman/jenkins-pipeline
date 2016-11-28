@@ -9,9 +9,9 @@ node("linux") {
   }
   stage("work") {
 //    sh "find /scmjenkins -name blargo-mustard.marker"
-    sh "find /home -name blargo-mustard.marker"
-    sh "find /lexbuild -name blargo-mustard.marker"
-    sh "find /tmp -name blargo-mustard.marker"
+//    sh "find /home -name blargo-mustard.marker"
+//    sh "find /lexbuild -name blargo-mustard.marker"
+//    sh "find /tmp -name blargo-mustard.marker"
     sh "find /var -name blargo-mustard.marker"
     sh "find /etc -name blargo-mustard.marker"
 
