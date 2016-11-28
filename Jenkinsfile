@@ -1,8 +1,4 @@
 #!groovy
-node("linux") {
-  def scriptFile = getClass().protectionDomain.codeSource.location.path
-  echo scriptFile;
-}
 
 node("linux") {
   stage("checkout") {
@@ -12,6 +8,9 @@ node("linux") {
     git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: params.BRANCH
   }
   stage("work") {
+    sh "find /scmjenkins -name blargo-mustard.marker"
+    sh "find ${env.JENKINS_HOME} -name blargo-mustard.marker"
+
     echo pwd()
     echo """
 currentBuild.number = ${currentBuild.number}
