@@ -1,7 +1,8 @@
 #!groovy
-
-echo 'Starting'
-echo pwd()
+node("linux") {
+  echo 'Starting'
+  sh 'ls -al'  
+}
 
 node("linux") {
   stage("checkout") {
