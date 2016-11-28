@@ -1,5 +1,8 @@
 #!groovy
 
+echo 'Starting'
+echo pwd()
+
 node("linux") {
   stage("checkout") {
     if (!params.containsKey('BRANCH')) {
@@ -50,9 +53,6 @@ parameters
     wrap([$class: 'BuildUser']) {
       echo "env.BUILD_USER = ${env.BUILD_USER}"
     }
-    sh "ls -al ${env.JENKINS_HOME}"
-    sh "cat ${env.JENKINS_HOME}/config.xml"
-    sh "ls -al ${env.JENKINS_HOME}/workspace"
     def text = readFile file: "jenkins/resource.txt", encoding: 'UTF-8'
     println text
     def atext = readFile file: "${env.WORKSPACE}@script/jenkins/resource.txt", encoding: 'UTF-8'
