@@ -1,11 +1,11 @@
 #!groovy
 
+def jenkinsfile
+
 node("linux") {
-  deleteDir()
-  dir ("scr1pt") {
+  dir (".script") {
     git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: 'rds'
   }
-  dir ("w0rk") {
-    git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: params.BRANCH
-  }
+  jenkinsfile = load 'jenkins/main.groovy'
 }
+jenkinsfile.build()
