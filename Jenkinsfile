@@ -1,7 +1,8 @@
 #!groovy
 node {
+  echo 'here'
   def scriptFile = getClass().protectionDomain.codeSource.location.path
-  echo scriptFile;
+  echo scriptFile
 }
 
 node {
