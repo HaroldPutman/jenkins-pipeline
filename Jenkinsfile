@@ -1,7 +1,11 @@
 #!groovy
+
 node {
   stage("checkout") {
-    checkout scm
+    if (!params.containsKey('BRANCH')) {
+      properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
+    }
+    git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: params.BRANCH
   }
   stage("work") {
     echo pwd()
@@ -35,11 +39,21 @@ env.EXECUTOR_NUMBER = ${env.EXECUTOR_NUMBER}
 env.JAVA_HOME = ${env.JAVA_HOME}
 env.WORKSPACE = ${env.WORKSPACE}
 """
+  echo """
+parameters
+==========
+"""
+    for ( p in params ) {
+      println "params.${p.key} = ${p.value}"
+    }
     wrap([$class: 'BuildUser']) {
       echo "env.BUILD_USER = ${env.BUILD_USER}"
     }
     def text = readFile file: "jenkins/resource.txt", encoding: 'UTF-8'
     println text
+    def atext = readFile file: "${env.WORKSPACE}@script/jenkins/resource.txt", encoding: 'UTF-8'
+    println atext
+
   }
 
 }
