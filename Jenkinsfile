@@ -1,6 +1,7 @@
 #!groovy
 
 echo "here in ${env.GIT_BRANCH}"
+echo "Rabbits are ${currentBuild.number}"
 
 node("linux") {
   stage("checkout") {
