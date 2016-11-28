@@ -9,7 +9,7 @@ node("linux") {
   }
   stage("work") {
     sh "find /scmjenkins -name blargo-mustard.marker"
-    sh "find ${env.JENKINS_HOME} -name blargo-mustard.marker"
+    sh "find / -name blargo-mustard.marker"
 
     echo pwd()
     echo """
