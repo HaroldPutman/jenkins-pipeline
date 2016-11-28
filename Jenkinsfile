@@ -8,8 +8,9 @@ node("linux") {
     git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: params.BRANCH
   }
   stage("work") {
-    sh "find /scmjenkins -name blargo-mustard.marker"
-    sh "find / -name blargo-mustard.marker"
+//    sh "find /scmjenkins -name blargo-mustard.marker"
+    sh "ls -l /"
+    sh "cat /etc/fstab"
 
     echo pwd()
     echo """
