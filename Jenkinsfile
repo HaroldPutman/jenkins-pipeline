@@ -2,6 +2,7 @@
 
 echo "here in ${env.GIT_BRANCH}"
 echo "Rabbits are ${currentBuild.number}"
+println currentBuild.rawBuild
 
 node("linux") {
   stage("checkout") {
@@ -49,6 +50,8 @@ env.EXECUTOR_NUMBER = ${env.EXECUTOR_NUMBER}
 env.JAVA_HOME = ${env.JAVA_HOME}
 env.WORKSPACE = ${env.WORKSPACE}
 env.JENKINS_HOME = ${env.JENKINS_HOME}
+env.GIT_BRANCH = ${env.GIT_BRANCH}
+env.GIT_URL = ${env.GIT_URL}
 """
   echo """
 parameters
