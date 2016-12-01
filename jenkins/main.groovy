@@ -40,6 +40,8 @@ env.EXECUTOR_NUMBER = ${env.EXECUTOR_NUMBER}
 env.JAVA_HOME = ${env.JAVA_HOME}
 env.WORKSPACE = ${env.WORKSPACE}
 env.JENKINS_HOME = ${env.JENKINS_HOME}
+env.GIT_COMMIT = ${env.GIT_COMMIT}
+env.GIT_PREVIOUS_SUCCESSFUL_COMMIT = ${env.GIT_COMMIT}
 """
       echo """
 parameters
