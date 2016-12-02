@@ -1,8 +1,18 @@
+import groovy.transform.Field
+
+@Field
+def mailVars = [:]
+
 def build() {
 
   node('linux') {
     dir('main') {
       stage('checkout') {
+
+        mailVars << [
+          JONES: "Martha Stewart",
+          DOG: "Bingo"
+        ]
         if (!params.containsKey('BRANCH')) {
           properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
         }
@@ -58,6 +68,7 @@ parameters
         def atext = readFile file: "${env.WORKSPACE}/.script/jenkins/resource.txt", encoding: 'UTF-8'
         println atext
         println getChangeString()
+        showmailVars()
       }
     }
   }
@@ -65,6 +76,9 @@ parameters
 
 return this
 
+/**
+ * This requires approval for rawBuild which is recommended against by Jenkins.
+ */
 @NonCPS
 def getChangeString() {
     MAX_MSG_LEN = 100
@@ -85,4 +99,8 @@ def getChangeString() {
         changeString = " - No new changes"
     }
     return changeString
+}
+
+def showmailVars() {
+  println mailVars.JONES
 }
