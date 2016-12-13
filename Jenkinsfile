@@ -5,7 +5,7 @@ def jenkinsfile
 node("linux") {
   deleteDir()
   dir (".script") {
-    git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: 'rds'
+    git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: 'master'
   }
   jenkinsfile = load '.script/jenkins/main.groovy'
 }
