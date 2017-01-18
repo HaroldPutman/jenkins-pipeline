@@ -1,5 +1,5 @@
 def Hello
-node ('master') {
+node {
     def workspace = pwd()
     Hello = load "${workspace}@script/jenkins/hello.groovy"
 }
