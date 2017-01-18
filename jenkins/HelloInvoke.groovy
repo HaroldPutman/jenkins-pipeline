@@ -1,6 +1,3 @@
-def Hello
-
 node('linux') {
-  Hello = load 'jenkins/hello.groovy'
-  Hello.run2()
+  new Hello().run2()
 }
