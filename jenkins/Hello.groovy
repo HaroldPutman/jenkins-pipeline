@@ -9,10 +9,10 @@ class Hello extends CpsScript {
      * This methods runs when calling load or when running directly
      */
     def run() {
-        println 'Hello world!'
+        println 'From Inside'
         return this
     }
 }
 
-println 'Outside scope'
+println 'From Outside'
 return new Hello()
