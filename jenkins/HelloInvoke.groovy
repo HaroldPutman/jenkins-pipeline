@@ -1,6 +1,6 @@
 def Hello
 
 node('linux') {
-  Hello = load 'hello.groovy'
+  Hello = load 'jenkins/hello.groovy'
   Hello.run2()
 }
