@@ -1,5 +1,5 @@
 import org.codehaus.groovy.runtime.InvokerHelper
-class Hello extends Script {
+class Hello extends CpsScript {
     def run2() {
         println 'Goodbye world!'
     }
@@ -11,6 +11,6 @@ class Hello extends Script {
 
     static void main(String[] args) {
         println 'In Main';
-        InvokerHelper.runScript(Main, args)
+        InvokerHelper.runScript(Hello, args)
     }
 }
