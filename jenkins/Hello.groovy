@@ -14,4 +14,5 @@ class Hello extends CpsScript {
     }
 }
 
-println 'Outside scope';
+println 'Outside scope'
+return new Hello()
