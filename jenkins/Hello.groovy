@@ -1,7 +1,7 @@
 import org.jenkinsci.plugins.workflow.cps.CpsScript
 
 class Hello extends CpsScript {
-    def run2() {
+    def say() {
         println 'Goodbye world!'
     }
 

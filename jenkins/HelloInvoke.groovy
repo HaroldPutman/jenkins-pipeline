@@ -1,3 +1,6 @@
-node('linux') {
-  new Hello().run2()
+def Hello
+node ('master') {
+    def workspace = pwd()
+    Hello = load '../${workspace}@script/jenkins/hello.groovy'
 }
+Hello.say()
