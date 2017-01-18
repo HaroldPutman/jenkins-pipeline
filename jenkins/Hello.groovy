@@ -1,5 +1,6 @@
 import org.codehaus.groovy.runtime.InvokerHelper
-class Hello extends Script {
+import org.jenkinsci.plugins.workflow.cps.CpsScript
+class Hello extends CpsScript {
     def run2() {
         println 'Goodbye world!'
     }
