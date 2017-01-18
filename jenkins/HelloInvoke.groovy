@@ -1,6 +1,4 @@
 def Hello
-node {
-    def workspace = pwd()
-    Hello = load "${workspace}@script/jenkins/hello.groovy"
-}
+Hello = load "${JENKINS_HOME}@script/jenkins/hello.groovy"
+
 Hello.say()
