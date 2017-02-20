@@ -5,6 +5,7 @@
  * For best results you should fetch this from SCM.
  */
 import groovy.json.JsonSlurperClassic
+import hudson.AbortException
 
 //+ staticMethod org.codehaus.groovy.runtime.EncodingGroovyMethods encodeBase64 byte[]
 //+ method java.lang.String getBytes
@@ -62,7 +63,7 @@ println "Something ${vartext}".getBytes()
 //+ method hudson.plugins.git.BranchSpec getName
 try {
   def branch = scm.branches[0].name
-} catch(Exception ex) {
+} catch(AbortException ex) {
   println ex
 }
 
