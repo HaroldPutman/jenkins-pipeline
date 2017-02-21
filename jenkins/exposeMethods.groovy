@@ -71,7 +71,9 @@ try {
 //+ method org.jenkinsci.plugins.workflow.steps.FlowInterruptedException getCauses
 //+ method org.jenkinsci.plugins.workflow.support.steps.input.Rejection getUser
 try {
-  def derp = 'yes'
+  timeout(time: 1, unit: 'SECONDS') {
+    input 'Timeout'
+  }
 } catch(FlowInterruptedException err) {
   def user = err.getCauses()[0].getUser()
 }
