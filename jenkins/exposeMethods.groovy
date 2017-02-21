@@ -67,6 +67,14 @@ try {
   println ex
 }
 
+//+ method org.jenkinsci.plugins.workflow.steps.FlowInterruptedException getCauses
+//+ method org.jenkinsci.plugins.workflow.support.steps.input.Rejection getUser
+try {
+  def derp = 'yes'
+} catch(FlowInterruptedException err) {
+  def user = err.getCauses()[0].getUser()
+}
+
 //+ new java.util.Date
 def today = new Date()
 println today.format('w').toInteger() + 103
