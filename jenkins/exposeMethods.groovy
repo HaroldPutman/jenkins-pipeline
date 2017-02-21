@@ -6,6 +6,7 @@
  */
 import groovy.json.JsonSlurperClassic
 import hudson.AbortException
+import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
 
 //+ staticMethod org.codehaus.groovy.runtime.EncodingGroovyMethods encodeBase64 byte[]
 //+ method java.lang.String getBytes
