@@ -13,5 +13,6 @@ stage('preload') {
 stage('build') {
   node('linux') {
     echo 'Building...'
+    echo 'release is 3'
   }
 }
