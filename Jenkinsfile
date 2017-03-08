@@ -2,7 +2,7 @@
 def jenkinsfile
 
 stage('preload') {
-  stash name: 'pipeline-scripts' includes:'jenkins/**'
+  stash name: 'pipeline-scripts', includes:'jenkins/**'
 }
 stage('build') {
   node('linux') {
