@@ -1,12 +1,12 @@
-#!groovy
 
 def jenkinsfile
 
-node("linux") {
-  deleteDir()
-  dir (".script") {
-    git url: 'https://github.com/HaroldPutman/jenkins-pipeline.git', branch: 'master'
-  }
-  jenkinsfile = load '.script/jenkins/main.groovy'
+stage('preload') {
+  stash name: 'pipeline-scripts' includes:'jenkins/**'
 }
-jenkinsfile.build()
+stage('build') {
+  node('linux') {
+    unstash 'pipeline-scripts'
+    sh 'ls -al'
+  }
+}
