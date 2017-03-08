@@ -1,12 +1,16 @@
-
 def jenkinsfile
 
 stage('preload') {
-  stash name: 'pipeline-scripts', includes:'jenkins/**'
+  node('linux') {
+    dir ('.script') {
+      checkout scm
+    }
+    echo "BRANCH: ${BRANCH_NAME}"
+    sh 'ls -Rl'
+  }
 }
 stage('build') {
   node('linux') {
-    unstash 'pipeline-scripts'
-    sh 'ls -al'
+    echo 'Building...'
   }
 }
