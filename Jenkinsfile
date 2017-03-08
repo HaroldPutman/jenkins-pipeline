@@ -5,7 +5,8 @@ stage('preload') {
     dir ('.script') {
       checkout scm
     }
-    echo "BRANCH: ${BRANCH_NAME}"
+    def branchName = scm.branches[0]
+    echo "BRANCH: ${branchName}"
     sh 'ls -Rl'
   }
 }
