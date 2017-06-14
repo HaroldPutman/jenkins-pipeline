@@ -2,8 +2,9 @@ def jenkinsfile
 
 stage('build') {
   node('linux') {
-    checkout scm 
+    checkout scm
     def props = readJSON file: 'jenkins/keys.json'
-    properties([parameters([choice(choices: props, description: 'Pick one', name: 'key')])])
+    String[] keys = props.toArray(new String[props.size()])
+    properties([parameters([choice(choices: keys, description: 'Pick one', name: 'key')])])
   }
 }
