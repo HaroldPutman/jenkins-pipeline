@@ -5,6 +5,6 @@ stage('build') {
     checkout scm
     def props = readJSON file: 'jenkins/keys.json'
     String[] keys = props.toArray(new String[props.size()])
-    properties([parameters([choice(choices: keys, description: 'Pick one', name: 'key')])])
+    properties([parameters([choice(choices: keys.join(','), description: 'Pick one', name: 'key')])])
   }
 }
