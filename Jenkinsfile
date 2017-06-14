@@ -4,7 +4,7 @@ def userInput
 stage('build') {
   node('linux') {
     checkout scm
-    def props = readJSON file: 'jenkins/keys.json'  }
+    def props = readJSON file: 'jenkins/keys.json'
     keys = props.toArray(new String[props.size()])
   }
   userInput = input(
