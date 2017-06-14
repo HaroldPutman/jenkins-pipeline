@@ -18,6 +18,6 @@ stage('build') {
 
 stage('next') {
   node('linux') {
-    echo userInput.choice1
+    println userInput
   }
 }
