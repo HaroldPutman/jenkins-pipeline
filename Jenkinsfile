@@ -1,18 +1,8 @@
 def jenkinsfile
 
-stage('preload') {
-  node('linux') {
-    dir ('.script') {
-      checkout scm
-    }
-    def branchName = scm.branches[0]
-    echo "BRANCH: ${branchName}"
-    sh 'ls -Rl'
-  }
-}
 stage('build') {
   node('linux') {
-    echo 'Building...'
-    echo 'release is 3'
+    def props = readJSON file: jenkins/keys.json
+    properties([parameters([choice(choices: props, description: 'Pick one', name: 'key')])])
   }
 }
