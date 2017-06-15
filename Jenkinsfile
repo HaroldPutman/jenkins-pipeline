@@ -26,7 +26,7 @@ stage('next') {
   node('linux') {
     if (params.key == NEXT) {
       echo 'Finding the next'
-      def out = sh script:"ls -ort *.x | head -n 1", returnStdout: true
+      def out = sh script:"ls -ort ${WORKSPACE}/_stamp/*.x | head -n 1", returnStdout: true
       echo out.trim()
     } else {
       echo params.key
