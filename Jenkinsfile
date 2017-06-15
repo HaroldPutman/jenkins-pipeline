@@ -1,4 +1,3 @@
-import org.codehaus.groovy.grails.web.json.JSONObject
 import static Constants.*
 
 class Constants {
@@ -27,7 +26,7 @@ stage('next') {
         echo 'File'
       } else {
         echo 'No file'
-        def obj = new JSONObject().put('foo', 'bar')
+        def obj = readJSON text: '{ "foo": "bar" }'
         writeJSON json: obj, file: 'status.json'
       }
     } else {
