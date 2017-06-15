@@ -22,6 +22,13 @@ stage('next') {
   node('linux') {
     if (params.key == NEXT) {
       echo 'Finding the next'
+      if (fileExists 'status.json') {
+        echo 'File'
+      } else {
+        echo 'No file'
+        def obj = new JSONObject().put('foo', 'bar')
+        writeJSON json: obj, file: 'status.json'
+      }
     } else {
       echo params.key
     }
