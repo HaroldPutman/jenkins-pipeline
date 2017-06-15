@@ -1,3 +1,4 @@
+import org.codehaus.groovy.grails.web.json.JSONObject
 import static Constants.*
 
 class Constants {
