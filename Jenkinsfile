@@ -35,6 +35,7 @@ stage('next') {
         for (i = 0; i < status.size(); i++) {
           def k = status.names().getString(i)
           def t = status.get(k)
+          echo "${k}: ${t} (${oldest})"
           if (t < oldest) {
             oldest = t
             key = k
