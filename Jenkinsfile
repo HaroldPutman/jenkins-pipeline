@@ -32,7 +32,7 @@ stage('next') {
       if (fileExists(STATFILE)) {
         status = readJSON file: STATFILE
         def oldest = now
-        for (i = 0; i < status.length(); i++) {
+        for (i = 0; i < status.size(); i++) {
           def k = status.names().getString(i)
           def t = status.get(k)
           if (t < oldest) {
