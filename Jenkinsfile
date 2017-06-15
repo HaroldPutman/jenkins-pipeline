@@ -27,6 +27,7 @@ stage('next') {
       } else {
         echo 'No file'
         def obj = readJSON text: '{ "foo": "bar" }'
+        obj.put('foo', 'base')
         writeJSON json: obj, file: 'status.json'
       }
     } else {
