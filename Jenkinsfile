@@ -24,21 +24,31 @@ stage('init') {
 
 stage('next') {
   node('linux') {
-    String key
+    String key = null
     def status = readJSON text: '{}'
+    def now = (new Date()).getTime()
     if (params.key == NEXT) {
       echo 'Finding the next'
-      key = keys[1]
-      try {
+      if (fileExists(STATFILE)) {
         status = readJSON file: STATFILE
-      } catch (Exception ex) {
-        println ex
+        def oldest = now
+        for (i = 0; i < status.names().length(); i++) {
+          def k = status.names().getString(i)
+          def t = status.get(k)
+          if (t < oldest) {
+            oldest = t
+            key = k
+          }
+        }
+      } else {
+        // No stat file start at the top.
+        key = keys[1]
       }
+
     } else {
       key = params.key
     }
-    def now = new Date()
-    status.put(key, now.getTime())
+    status.put(key, now)
     writeJSON json: status, file: STATFILE
     echo "Building ${key}"
   }
