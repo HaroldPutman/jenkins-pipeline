@@ -1,3 +1,8 @@
+import static Constants.*
+
+class Constants {
+    static final NEXT = '<next>'
+}
 
 stage('init') {
   node('linux') {
@@ -5,7 +10,7 @@ stage('init') {
 
     def props = readJSON file: 'jenkins/keys.json'
     String[] keys = new String[props.size() + 1]
-    keys[0] = '<next>'
+    keys[0] = NEXT
     for (i = 0; i < props.size(); i++) {
       keys[i + 1] = props[i]
     }
@@ -15,10 +20,10 @@ stage('init') {
 
 stage('next') {
   node('linux') {
-    if (params.key) {
-      echo params.key
+    if (params.key == NEXT) {
+      echo 'Finding the next'
     } else {
-      echo 'No key'
+      echo params.key
     }
   }
 }
