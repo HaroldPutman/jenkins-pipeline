@@ -26,12 +26,12 @@ stage('next') {
   node('linux') {
     String key = null
     def status = readJSON text: '{}'
+    if (fileExists(STATFILE)) {
+      status = readJSON file: STATFILE
+    }
     def now = (new Date()).getTime()
     if (params.key == NEXT) {
       echo 'Finding the next'
-      if (fileExists(STATFILE)) {
-        status = readJSON file: STATFILE
-      }
       def oldest = now
       def found = false
       for (i = 1; i < keys.size() && !found; i++) {
