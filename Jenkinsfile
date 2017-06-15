@@ -31,26 +31,25 @@ stage('next') {
       echo 'Finding the next'
       if (fileExists(STATFILE)) {
         status = readJSON file: STATFILE
-        def oldest = now
-        for (i = 0; i < status.size(); i++) {
-          def k = status.names().getString(i)
-          def t = status.get(k)
-          echo "${k}: ${t} (${oldest})"
-          if (t < oldest) {
-            oldest = t
-            key = k
-          }
-        }
-      } else {
-        // No stat file start at the top.
-        key = keys[1]
       }
-
+      def oldest = now
+      def found = false
+      for (i = 1; i < keys.size() && !found; i++) {
+        def t = status.get(keys[i])
+        if (t == null) {
+          key = keys[i]
+          found = true
+        } else if (t < oldest) {
+          oldest = t
+          key = keys[i]
+        }
+      }
     } else {
       key = params.key
     }
     status.put(key, now)
     writeJSON json: status, file: STATFILE
     echo "Building ${key}"
+    currentBuild.description = "${key}"
   }
 }
