@@ -12,7 +12,7 @@ stage('build') {
 
 stage('next') {
   node('linux') {
-    if (params.hasProperty('key')) {
+    if (params.key) {
       echo params.key
     } else {
       echo 'No key'
