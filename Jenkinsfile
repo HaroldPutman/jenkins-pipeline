@@ -4,7 +4,8 @@ stage('init') {
     checkout scm
 
     def props = readJSON file: 'jenkins/keys.json'
-    String[] keys = ['<next>']
+    String[] keys = new String[props.size() + 1]
+    keys[0] = '<next>'
     for (i = 0; i < props.size(); i++) {
       keys[i + 1] = props[i]
     }
