@@ -2,12 +2,14 @@
 def start() {
   stage('main') {
       node('linux') {
-        step ([$class: 'CopyArtifact',
-                projectName: 'other-project',
-                filter: 'myapp.jar',
-                selector: [$class: 'SpecificBuildSelector', buildNumber: currentBuild.number.toString()]
-              ]);
-        sh 'cat jenkins/keys.json'
+        dir('.script') {
+          step ([$class: 'CopyArtifact',
+                  projectName: currentBuild.projectName,
+                  filter: 'jenkins/**',
+                  selector: [$class: 'SpecificBuildSelector', buildNumber: currentBuild.number.toString()]
+                ]);
+        }
+        sh 'ls -R .script'
       }
   }
 }
