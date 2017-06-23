@@ -10,3 +10,4 @@ def start() {
         sh 'cat jenkins/keys.json'
       }
   }
+}

@@ -5,4 +5,4 @@ stage('preload') {
     jenkinsfile = load 'jenkins/mainer.groovy'
   }
 }
-jenkinsfile.start(branch, repo)
+jenkinsfile.start()
