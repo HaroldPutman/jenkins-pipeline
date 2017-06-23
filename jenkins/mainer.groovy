@@ -5,7 +5,7 @@ def start() {
         step ([$class: 'CopyArtifact',
                 projectName: 'other-project',
                 filter: 'myapp.jar',
-                selector: [$class: 'SpecificBuildSelector', buildNumber: currentBuild.number]
+                selector: [$class: 'SpecificBuildSelector', buildNumber: currentBuild.number.toString()]
               ]);
         sh 'cat jenkins/keys.json'
       }
