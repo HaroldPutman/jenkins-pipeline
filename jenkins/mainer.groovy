@@ -2,15 +2,9 @@
 def start() {
   stage('init') {
     node('linux') {
-      dir('.script') {
-        step ([$class: 'CopyArtifact',
-          projectName: currentBuild.projectName,
-          filter: 'jenkins/**',
-          selector: [$class: 'SpecificBuildSelector', buildNumber: currentBuild.number.toString()]
-        ]);
-      }
-    stash name:'jenkins', includes: 'jenkins/**'
-    sh 'ls -lR'
+      unstash 'all'
+      sh 'ls -lR'
+      sh 'cat jenkins/resource.txt'
     }
   }
   stage('checkout') {
@@ -20,9 +14,9 @@ def start() {
   }
   stage('main') {
     node('linux') {
-      unstash 'jenkins'
+      unstash 'all'
       sh 'ls -lR'
-      // do the things
+      sh 'cat jenkins/resource.txt'
     }
   }
 }
