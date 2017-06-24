@@ -3,6 +3,7 @@ stage('preload') {
     checkout scm
     archiveArtifacts 'jenkins/**'
     jenkinsfile = load 'jenkins/mainer.groovy'
+    // stash name:'jenkins', includes: 'jenkins/**'
   }
 }
 jenkinsfile.start()
